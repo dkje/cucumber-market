@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth #metadata의 label과 일치해야함
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: us.gcr.io/ticketing-dev-300713/auth
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: auth-srv
+spec:
+  selector:
+    app: auth #label과 일치해야함
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
