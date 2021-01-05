@@ -12,14 +12,17 @@ const validations = [
     .withMessage("Password must be between 4 and 20 characters"),
 ];
 
-router.post("/api/users/signup", validations, (req: Request, res: Response) => {
-  console.log("creating a user");
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) throw new RequestValidationError(errors.array());
+router.post(
+  "/api/users/signup",
+  validations,
+  async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) throw new RequestValidationError(errors.array());
 
-  throw new DatabaseConnectionError();
-  const { email, password } = req.body;
-  res.send("Hi there!");
-});
+    throw new DatabaseConnectionError();
+    const { email, password } = req.body;
+    res.send("Hi there!");
+  }
+);
 
 export { router as signupRouter };
