@@ -9,6 +9,6 @@ export class NotFoundError extends CustomError {
   }
 
   serializeError() {
-    return [{ message: "Not Found" }];
+    return [{ message: "페이지를 찾을 수 없습니다" }];
   }
 }

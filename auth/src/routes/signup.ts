@@ -7,11 +7,11 @@ import { User } from "../models/users";
 
 const router = express.Router();
 const validations = [
-  body("email").isEmail().withMessage("Email must be valid"),
+  body("email").isEmail().withMessage("유효하지 않은 메일입니다"),
   body("password")
     .trim()
     .isLength({ min: 4, max: 20 })
-    .withMessage("Password must be between 4 and 20 characters"),
+    .withMessage("비밀번호는 4 ~ 20자 사이의 문자여야합니다"),
 ];
 
 router.post(
@@ -25,7 +25,7 @@ router.post(
     if (existingUser) {
       console.log("Email in use");
       // return res.send({});
-      throw new BadRequestError("Email in use");
+      throw new BadRequestError("사용 중인 이메일입니다");
     }
 
     const user = User.build({ email, password });
