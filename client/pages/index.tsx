@@ -1,3 +1,3 @@
-const IndexPage = () => <h1>hi there~</h1>;
+const LandingPage = () => <h1></h1>;
 
-export default IndexPage;
+export default LandingPage;
