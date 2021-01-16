@@ -18,7 +18,7 @@ app.use(json());
 app.use(
   cookieSession({
     signed: false, //비암호화
-    secure: true,
+    secure: process.env.NODE_ENV !== "test", // test환경일시 false
   })
 );
 
