@@ -1,11 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
+import type { AppProps } from "next/app";
 
-interface appProps {
-  Component: React.ComponentType;
-  pageProps: any;
-}
-
-const app: React.FC<appProps> = ({ Component, pageProps }) => {
+const app = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
 };
 

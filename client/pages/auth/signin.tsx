@@ -3,11 +3,11 @@ import useRequest from "../../hooks/use-request";
 import Router from "next/router";
 import { NextPage } from "next";
 
-const Signin: NextPage = () => {
+const SignUp: NextPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { doRequest, errors } = useRequest({
-    url: "/api/users/signin",
+    url: "/api/users/signup",
     method: "post",
     body: { email, password },
     onSuccess: () => {
@@ -22,7 +22,7 @@ const Signin: NextPage = () => {
 
   return (
     <form onSubmit={(e) => onSubmit(e)}>
-      <h1>Sign up</h1>
+      <h1>Sign in</h1>
       <div className="form-group">
         <label>Email Address</label>
         <input
@@ -51,4 +51,4 @@ const Signin: NextPage = () => {
   );
 };
 
-export default Signin;
+export default SignUp;
