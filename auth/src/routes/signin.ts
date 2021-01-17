@@ -11,25 +11,24 @@ const router = express.Router();
 router.post(
   "/api/users/signin",
   [
-    body("email").isEmail().withMessage("Email must be vaild"),
-    body("password")
-      .trim()
-      .notEmpty()
-      .withMessage("You must supply a password"),
+    body("email").isEmail().withMessage("유효하지 않은 이메일입니다"),
+    body("password").trim().notEmpty().withMessage("비밀번호를 입력해주세요"),
   ],
   validationRequest,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
-    if (!existingUser) throw new BadRequestError("Invalid Credencials");
+    if (!existingUser)
+      throw new BadRequestError("인증 정보가 유효하지 않습니다");
 
     //compare password
     const passwordsMatch = await Password.compare(
       existingUser.password,
       password
     );
-    if (!passwordsMatch) throw new BadRequestError("Invalid Credencials");
+    if (!passwordsMatch)
+      throw new BadRequestError("인증 정보가 유효하지 않습니다");
 
     const userJwt = jwt.sign(
       {

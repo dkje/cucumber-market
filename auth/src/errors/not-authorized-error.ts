@@ -9,6 +9,6 @@ export class NotAuthorizedError extends CustomError {
   }
 
   serializeError() {
-    return [{ message: "Not authorized" }];
+    return [{ message: "로그인 해주세요" }];
   }
 }
