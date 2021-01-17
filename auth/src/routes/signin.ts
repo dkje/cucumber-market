@@ -1,8 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import { User } from "../models/users";
-import { validationRequest } from "../middlewares/validate-request";
-import { BadRequestError } from "../errors/bad-request-error";
+import { validationRequest, BadRequestError } from "@cucumber-market/common";
 import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
 
