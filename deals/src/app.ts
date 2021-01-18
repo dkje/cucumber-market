@@ -10,6 +10,7 @@ import {
 import { createDealsRouter } from "./routes/new";
 import { showDealRouter } from "./routes/show";
 import { indexDealRouter } from "./routes";
+import { updateDealRouter } from "./routes/updates";
 
 const app = express();
 app.set("trust proxy", true);
@@ -28,6 +29,7 @@ app.use(currentUser);
 app.use(createDealsRouter);
 app.use(showDealRouter);
 app.use(indexDealRouter);
+app.use(updateDealRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
