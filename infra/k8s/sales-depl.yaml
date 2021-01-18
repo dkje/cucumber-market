@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sales-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sales #metadata의 label과 일치해야함
+  template:
+    metadata:
+      labels:
+        app: sales
+    spec:
+      containers:
+        - name: sales
+          image: us.gcr.io/ticketing-dev-300713/sales
+          env:
+            - name: MONGO_URI
+              value: "mongodb://sales-mongo-srv:27017/sales"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sales-srv
+spec:
+  selector:
+    app: sales #label과 일치해야함
+  ports:
+    - name: sales
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
