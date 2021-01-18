@@ -278,10 +278,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cucumber-market/common@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@cucumber-market/common/-/common-1.0.2.tgz#a489009cd62824110535358c17e39249781eb053"
-  integrity sha512-IoAj7p3RPe70dhF4g9Y9QUG8s/JqAlFcaBrkeI2ushN/p4fScXl6D/1l2K5HecmhEDnpnoEFAqh1WKA8jlYrMQ==
+"@cucumber-market/common@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@cucumber-market/common/-/common-1.0.3.tgz#02d7d4afe8844c3bca47fd6f48976a4e34da8a5e"
+  integrity sha512-G8HqHacHaCyDxBn15QPL273bi3VzEVQqzQ63urMoOT/jhW/9yauJ6BywE8WYvjUrosbcE5OHpfhPEb9cu2swmA==
   dependencies:
     "@types/cookie-session" "^2.0.42"
     "@types/express" "^4.17.11"

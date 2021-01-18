@@ -9,6 +9,7 @@ import {
 } from "@cucumber-market/common";
 import { createDealsRouter } from "./routes/new";
 import { showDealRouter } from "./routes/show";
+import { indexDealRouter } from "./routes";
 
 const app = express();
 app.set("trust proxy", true);
@@ -26,6 +27,7 @@ app.use(currentUser);
 //routers
 app.use(createDealsRouter);
 app.use(showDealRouter);
+app.use(indexDealRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
