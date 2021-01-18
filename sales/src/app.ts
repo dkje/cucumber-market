@@ -3,6 +3,7 @@ import "express-async-errors";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
 import { errorHandler, NotFoundError } from "@cucumber-market/common";
+import { createSalesRouter } from "./routes/new";
 
 const app = express();
 app.set("trust proxy", true);
@@ -15,6 +16,8 @@ app.use(
     secure: process.env.NODE_ENV !== "test", // test환경일시 false
   })
 );
+
+app.use(createSalesRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
