@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  name: deals-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth #metadata의 label과 일치해야함
+      app: deals #metadata의 label과 일치해야함
   template:
     metadata:
       labels:
-        app: auth
+        app: deals
     spec:
       containers:
-        - name: auth
-          image: us.gcr.io/ticketing-dev-300713/auth
+        - name: deals
+          image: us.gcr.io/ticketing-dev-300713/deals
           env:
             - name: MONGO_URI
-              value: "mongodb://auth-mongo-srv:27017/auth"
+              value: "mongodb://deals-mongo-srv:27017/deals"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: deals-srv
 spec:
   selector:
-    app: auth #label과 일치해야함
+    app: deals #label과 일치해야함
   ports:
-    - name: auth
+    - name: deals
       protocol: TCP
       port: 3000
       targetPort: 3000
