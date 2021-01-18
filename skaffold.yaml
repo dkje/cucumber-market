@@ -26,8 +26,8 @@ build:
         manual:
           - src: "**/*.{ts,tsx}"
             dest: .
-    - image: us.gcr.io/ticketing-dev-300713/sales
-      context: sales
+    - image: us.gcr.io/ticketing-dev-300713/deals
+      context: deals
       docker:
         dockerfile: Dockerfile
       sync:

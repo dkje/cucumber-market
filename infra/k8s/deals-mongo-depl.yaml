@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sales-mongo-depl
+  name: deals-mongo-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sales-mongo #deployment가 pod를 찾기 위한 label
+      app: deals-mongo #deployment가 pod를 찾기 위한 label
   template:
     metadata:
       labels:
-        app: sales-mongo #pod에 적용되는 label
+        app: deals-mongo #pod에 적용되는 label
     spec: #pod의 spec
       containers:
-        - name: sales-mongo
+        - name: deals-mongo
           image: mongo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: sales-mongo-srv #도메인으로 사용할 이름
+  name: deals-mongo-srv #도메인으로 사용할 이름
 spec:
   selector:
-    app: sales-mongo
+    app: deals-mongo
   ports:
     - name: db
       protocol: TCP
